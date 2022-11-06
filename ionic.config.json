@@ -1,0 +1,7 @@
+{
+  "name": "reservation-firebase-ionic-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
