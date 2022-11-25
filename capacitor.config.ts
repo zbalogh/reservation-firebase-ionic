@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'reservation-firebase-ionic-app',
+  appId: 'io.ionic.reservation.firebase.app',
+  appName: 'Desk Reservation',
   webDir: 'www',
   bundledWebRuntime: false
 };

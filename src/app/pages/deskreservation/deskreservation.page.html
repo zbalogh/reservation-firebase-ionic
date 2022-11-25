@@ -1,0 +1,91 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ 'homePage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="primary">{{ 'homePage.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ion-card color="light" *ngIf="!loadingIndicator && dataLoaded">
+      <ion-card-header>
+          <ion-card-title color="primary">{{ 'reservationPage.title' | translate }}</ion-card-title>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <div>
+              <ion-text>
+                {{ 'reservationPage.text1' | translate }}
+              </ion-text>
+              
+              <br><br>
+              
+              {{ 'reservationPage.allDesks' | translate }}: {{numberOfAllDesks}} {{ 'reservationPage.pieces' | translate }}
+              <br>
+              {{ 'reservationPage.reservedDesks' | translate }}: {{numberOfReservedDesks}} {{ 'reservationPage.pieces' | translate }}
+              <br>
+              {{ 'reservationPage.freeDesks' | translate }}: {{numberOfFreeDesks}} {{ 'reservationPage.pieces' | translate }}
+          </div>
+          
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card color="light" *ngIf="loadingIndicator">
+      <ion-card-header>
+          <ion-card-title color="primary">{{ 'dataLoadingInProgress' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-card color="light" *ngIf="!loadingIndicator && !dataLoaded">
+      <ion-card-header>
+        <ion-card-title color="primary">{{ 'dataLoadingFailed' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>&nbsp;</ion-card-content>
+    </ion-card>
+
+
+    <!-- https://www.positronx.io/ionic-angular-responsive-grid-tutorial-with-examples/ -->
+
+    <ion-grid *ngIf="!loadingIndicator && dataLoaded">
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let reservation of reservationInfo.reservationList; let i = index">
+          <div>
+            <ion-card color="light">
+              <ion-card-header>
+                  <ion-card-title>
+                    <ion-icon *ngIf="reservation === 0" name="lock-open-outline" color="success"></ion-icon>
+                    <ion-icon *ngIf="reservation > 0" name="lock-closed-outline" color="danger"></ion-icon>
+                    {{ 'reservationPage.desknumber' | translate }}: #{{i+1}}
+                  </ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content *ngIf="reservation === 0">
+                  <ion-button class="my-ion-button-text-initial reservationListButton" color="success" 
+                      [routerLink]="['/deskreservation-form']" routerLinkActive="active" 
+                      [queryParams]="{ desknumber: i+1 }" queryParamsHandling="merge">{{ 'reservationPage.freeButton' | translate }}</ion-button>
+              </ion-card-content>
+      
+              <ion-card-content *ngIf="reservation > 0">
+                <ion-button class="my-ion-button-text-initial reservationListButton" color="danger">{{ 'reservationPage.reservedButton' | translate }}</ion-button>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

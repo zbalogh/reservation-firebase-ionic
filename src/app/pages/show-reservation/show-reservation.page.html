@@ -1,0 +1,138 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ 'showReservationPage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="primary">{{ 'showReservationPage.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="my-div-align-center" *ngIf="errorMessage">
+    <ion-text color="danger">
+      <h3>{{ errorMessage }}</h3>
+    </ion-text>
+    <br>
+  </div>
+
+  <div *ngIf="!cancelled && !deskReservation">
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-text>
+          <h3>{{ 'showReservationPage.title' | translate }}</h3>
+        </ion-text>
+      </ion-card-header>
+
+      <ion-card-content>
+        <h2>{{ 'showReservationPage.description' | translate }}</h2>
+        <br>
+        <h2>{{ 'showReservationPage.enterReservationIdentifier' | translate }}</h2>
+        <br>
+        <form (ngSubmit)="onSubmitReservationIdentifierForm(reservationIdentifierForm)" #reservationIdentifierForm="ngForm">
+          <ion-item>
+            <ion-label position="floating">{{ 'showReservationPage.reservationIdentifier' | translate }}</ion-label>
+            <ion-input type="text" class="form-control" 
+                id="inputReservationIdentifier" name="inputReservationIdentifier"
+                [(ngModel)]="reservationIdentifier"
+                required>
+            </ion-input>
+          </ion-item>
+          <br>
+          <ion-button type="submit" class="my-ion-button-text-initial" color="primary" [disabled]="!reservationIdentifierForm.form.valid">{{ 'showReservationPage.showButton' | translate }}</ion-button>
+          <br>
+      </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!cancelled && deskReservation">
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-text>
+            <h3>{{ 'showReservationPage.title' | translate }}</h3>
+          </ion-text>
+        </ion-card-header>
+        <ion-card-content>
+          <div>
+			      <h2>{{ 'showReservationPage.description' | translate }}</h2>
+            <br>
+            <h2>{{ 'showReservationPage.desknumber' | translate }}: #{{deskReservation.deskNumber}}</h2>
+            <br>
+            <h2>{{ 'showReservationPage.reservationIdentifier' | translate }}: {{deskReservation.reservationIdentifier}}</h2>
+        </div>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card color="light">
+        <ion-card-content>
+          <form #reservationDetailsForm="ngForm">
+            <ion-item>
+              <ion-label position="floating">{{ 'reservationPage.lastname' | translate }}</ion-label>
+              <ion-input type="text" class="form-control" 
+                  id="inputLastName" name="inputLastName"
+                  [(ngModel)]="deskReservation.lastname"
+                  required [readonly]="true">
+              </ion-input>
+            </ion-item>
+  
+            <br>
+            <ion-item>
+              <ion-label position="floating">{{ 'reservationPage.firstname' | translate }}</ion-label>
+              <ion-input type="text" class="form-control" 
+                  id="inputFirstName" name="inputFirstName"
+                  [(ngModel)]="deskReservation.firstname"
+                  required [readonly]="true">
+              </ion-input>
+            </ion-item>
+  
+            <br>
+            <ion-item>
+              <ion-label position="floating">{{ 'reservationPage.email' | translate }}</ion-label>
+              <ion-input type="email" class="form-control" 
+                  id="inputEmail" name="inputEmail"
+                  [(ngModel)]="deskReservation.email"
+                  required [readonly]="true">
+              </ion-input>
+            </ion-item>
+  
+            <br>
+            <ion-item>
+              <ion-label position="floating">{{ 'reservationPage.phonenumber' | translate }}</ion-label>
+              <ion-input type="tel" class="form-control" 
+                  id="inputTelephoneNumber" name="inputTelephoneNumber"
+                  [(ngModel)]="deskReservation.telephone"
+                  required [readonly]="true">
+              </ion-input>
+            </ion-item>
+  
+            <br>
+            <ion-button type="submit" class="my-ion-button-text-initial" color="danger" (click)="onCancelReservation()">{{ 'showReservationPage.cancelReservationButton' | translate }}</ion-button>
+            <br>
+          </form>
+        </ion-card-content>
+      </ion-card>
+  </div>
+
+  <div *ngIf="cancelled && deskReservation">
+      <ion-card color="light">
+        <ion-card-header>
+          <ion-text color="success">
+            <h3>{{ 'showReservationPage.cancelReservationSuccess' | translate }}</h3>
+          </ion-text>
+        </ion-card-header>
+        <ion-card-content>
+          <h2>{{ 'showReservationPage.desknumber' | translate }}: #{{deskReservation.deskNumber}}</h2>
+          <br>
+          <h2>{{ 'showReservationPage.reservationIdentifier' | translate }}: {{deskReservation.reservationIdentifier}}</h2>
+          <br>
+        </ion-card-content>
+      </ion-card>
+  </div>
+
+</ion-content>

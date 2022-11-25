@@ -1,0 +1,117 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ 'homePage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="primary">{{ 'homePage.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div *ngIf="submitted">
+    <ion-card color="light">
+      <ion-card-header>
+        <ion-text color="success">
+          <h3>{{ 'reservationPage.reservationSuccess' | translate }}</h3>
+        </ion-text>
+      </ion-card-header>
+      <ion-card-content>
+        <h2>{{ 'reservationPage.selectedDesk' | translate }}: #{{desknumber}}</h2>
+        <br>
+        <h2>{{ 'reservationPage.reservationIdentifier' | translate }} {{deskReservation.reservationIdentifier}}</h2>
+        <br>
+        <ion-button class="my-ion-button-text-initial" color="primary" routerLink="/deskreservation" routerLinkActive="active">{{ 'reservationPage.backToDeskList' | translate }}</ion-button>
+        <br>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="!submitted">
+    <ion-card color="light">
+      <ion-card-header>
+          <ion-text>
+            <h3>{{ 'reservationPage.enterData' | translate }}</h3>
+          </ion-text>
+      </ion-card-header>
+      <ion-card-content>
+          <div>
+              <ion-text>
+                {{ 'reservationPage.fillForm' | translate }}
+              </ion-text>
+              <br><br>
+              <h2>{{ 'reservationPage.selectedDesk' | translate }}: #{{desknumber}}</h2>
+              <br>
+              <ion-button class="my-ion-button-text-initial" color="primary" routerLink="/deskreservation" routerLinkActive="active">{{ 'reservationPage.backToDeskList' | translate }}</ion-button>
+              <br>
+          </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="light">
+      <ion-card-header *ngIf="message">
+          <ion-text color="danger">
+            <h3>{{ message | translate }}</h3>
+          </ion-text>
+      </ion-card-header>
+      <ion-card-content>
+        <form (ngSubmit)="onSubmit(reservationForm)" #reservationForm="ngForm">
+          <ion-item>
+            <ion-label position="floating">{{ 'reservationPage.lastname' | translate }}</ion-label>
+            <ion-input type="text" class="form-control" 
+                id="inputLastName" name="inputLastName"
+                [(ngModel)]="deskReservation.lastname"
+                required>
+            </ion-input>
+          </ion-item>
+
+          <br>
+          <ion-item>
+            <ion-label position="floating">{{ 'reservationPage.firstname' | translate }}</ion-label>
+            <ion-input type="text" class="form-control" 
+                id="inputFirstName" name="inputFirstName"
+                [(ngModel)]="deskReservation.firstname"
+                required>
+            </ion-input>
+          </ion-item>
+
+          <br>
+          <ion-item>
+            <ion-label position="floating">{{ 'reservationPage.email' | translate }}</ion-label>
+            <ion-input type="email" class="form-control" 
+                id="inputEmail" name="inputEmail"
+                [(ngModel)]="deskReservation.email"
+                required>
+            </ion-input>
+          </ion-item>
+
+          <br>
+          <ion-item>
+            <ion-label position="floating">{{ 'reservationPage.phonenumber' | translate }}</ion-label>
+            <ion-input type="tel" class="form-control" 
+                id="inputTelephoneNumber" name="inputTelephoneNumber"
+                [(ngModel)]="deskReservation.telephone"
+                required>
+            </ion-input>
+          </ion-item>
+
+          <br>
+          <ion-item>
+            <ion-toggle slot="start" id="checkboxAccept" name="checkboxAccept" [(ngModel)]="checkboxAccept"></ion-toggle>
+            <ion-label>{{ 'reservationPage.acceptTerms' | translate }}</ion-label>
+          </ion-item>
+
+          <br>
+          <ion-button type="submit" class="my-ion-button-text-initial" color="primary" [disabled]="!reservationForm.form.valid || !checkboxAccept">{{ 'reservationPage.reserveButton' | translate }}</ion-button>
+          <br>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>

@@ -1,0 +1,105 @@
+{
+	"headtitle": "Asztalfoglalás",
+
+	"pageNotFound": "A kért oldal nem található.",
+	"pageNotFoundTitle": "Nem található",
+	"dataLoadingInProgress": "Adatok betöltése folyamatban",
+	"dataLoadingFailed": "Adatok betöltése sikertelen.",
+
+	"menu": {
+		"deskreservation": "Asztalfoglalás",
+		"mainpage": "Kezdőlap",
+		"administration": "Adminisztráció",
+		"logoutpage": "Kijelentkezés",
+		"loginpage": "Bejelentkezés"
+	},
+
+	"homePage" : {
+		"title": "Asztalfoglalás",
+		"button": "Asztalfoglalás",
+		"showReservationButton": "Foglalásaim",
+		"guide" : {
+			"part1" : "Útmutató az online foglaláshoz",
+			"part2" : "Kattints az ASZTALFOGLALÁS gombra.",
+			"part3" : "Az asztal számát keresd meg a listában, és kattints a SZABAD gombra. Amennyiben már foglalt, keress másikat.",
+			"part4" : "A megjelenő oldalon töltsd ki az adataidat, és a feltételek elfogadása után kattints a FOGLALÁS gombra."
+		},
+		"showReservationGuide": "Kattints a FOGLALÁSAIM gombra, ha meg szeretnéd tekinteni a foglalásaidat."
+	},
+
+	"reservationPage" : {
+		"title": "Asztalfoglalások megjelenítése",
+		"text1": "Válaszd ki azt az asztalt, amit szeretnél lefoglalni. Töltsd ki az űrlapot és kattints a FOGLALÁS gombra.",
+		"allDesks": "Asztalok száma",
+		"reservedDesks": "Foglalt asztalok",
+		"freeDesks": "Szabad asztalok",
+		"pieces": "darab",
+		"desknumber": "Asztal száma",
+		"status": "Státusz",
+		"reservedButton": "Foglalt",
+		"freeButton": "Szabad",
+		"freeButtonHint": "Kattints ide, ha foglalni szeretnél.",
+		"reservationfailed": "A foglalás sikertelen. Lehet, hogy az asztal már foglalt.",
+		"reservationSuccess": "A foglalás sikeresen megtörtént!",
+		"selectedDesk": "Kiválasztott asztal",
+		"backToDeskList": "Vissza az asztalok listájához",
+		"enterData": "Adatok megadása",
+		"fillForm": "Az asztal foglalásához töltsd ki az űrlapot.",
+		"lastname": "Vezetéknév",
+		"firstname": "Keresztnév",
+		"email": "Email",
+		"phonenumber": "Telefonszám",
+		"reservationIdentifier": "A foglalásod azonosítója: ",
+		"acceptTerms": "Elfogadom a feltételeket.",
+		"reserveButton": "Foglalás"
+	},
+
+	"reservationEditorPage" : {
+		"title": "Foglalások kezelése",
+		"description": "Az adminisztrációs felületen keresztül lehetőséged van a foglalások szerkesztésére vagy törlésére.",
+		"desknumber": "Asztal száma",
+		"time": "Időpont",
+		"email": "Email",
+		"phonenumber": "Telefonszám",
+		"reservationIdentifier": "Foglalás azonosító",
+		"fullname": "Név",
+		"actions": "Műveletek",
+		"editorButtonLabel": "Kattints ide, ha módosítani szeretnéd ezt a foglalást!",
+		"editorButton": "Szerkesztés",
+		"deleteButtonLabel": "Kattints ide, ha törölni szeretnéd ezt a foglalást!",
+		"deleteButton": "Törlés",
+		"deleteConfirmation": "Szeretnéd törölni ezt a foglalást?",
+		"deleteYes": "Igen",
+		"deleteNo": "Nem",
+		"saveSuccess": "Adatok mentése megtörtént!",
+		"editReservation": "Foglalás szerkesztése",
+		"editorDescription": "Itt módosíthatod a kiválasztott asztalfoglalás adatait.",
+		"saveButton": "Mentés"
+	},
+
+	"showReservationPage" : {
+		"title": "Foglalás megtekintése",
+		"description": "Itt nézheted meg az asztalfoglalásod adatait.",
+		"reservationIdentifier": "Foglalás azonosító",
+		"desknumber": "Asztal száma",
+		"enterReservationIdentifier": "Kérlek, add meg a foglalási azonosítódat.",
+		"showButton": "Foglalás megtekintése",
+		"reservationNotFound": "Nem található foglalás a megadott azonosítóval.",
+		"cancelReservationFailed": "A foglalás törlése sikertelen.",
+		"cancelReservationSuccess" : "A foglalásodat sikeresen töröltük!",
+		"cancelReservationButton" : "Foglalás törlése"
+	},
+
+	"loginPage" : {
+		"text1": "A kilépéshez kattints a Kijelentkezés gombra.",
+		"text2" : "A belépéshez kattints a Bejelentkezés gombra.",
+		"text3" : "Bejelentkezés és hitelesítés folyamatban...",
+		"text4" : "Helytelen felhasználónév vagy jelszó!",
+		"username": "Felhasználónév",
+		"password": "Jelszó",
+		"loginbutton": "Bejelentkezés",
+		"logoutbutton": "Kijelentkezés",
+		"loginGoogleButton": "Bejelentkezés Google fiókkal"
+	}
+
+}

@@ -31,3 +31,6 @@ npm-debug.log*
 /platforms
 /plugins
 /www
+/tmp
+/out-tsc
+/angular/cache

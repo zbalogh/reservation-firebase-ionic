@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title *ngIf="!isLoggedin()" color="primary">{{ 'menu.loginpage' | translate }}</ion-title>
+    <ion-title *ngIf="isLoggedin()" color="primary">{{ 'menu.logoutpage' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title *ngIf="!isLoggedin()" size="large" color="primary">{{ 'menu.loginpage' | translate }}</ion-title>
+      <ion-title *ngIf="isLoggedin()" size="large" color="primary">{{ 'menu.logoutpage' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+  <div id="container">
+
+    <ion-card color="light">
+        <ion-card-header>
+            <ion-card-title color="primary">{{ message | translate }}</ion-card-title>
+        </ion-card-header>
+
+        <ion-card-content>
+
+          <div *ngIf="!isLoggedin()">
+            <form #loginForm="ngForm">
+              <ion-item>
+                <ion-label position="floating">{{ 'loginPage.username' | translate }}</ion-label>
+                <ion-input type="email" class="form-control" 
+                    id="username" name="username"
+                    [(ngModel)]="username"
+                    required>
+                </ion-input>
+              </ion-item>
+
+              <br>
+              <ion-item>
+                <ion-label position="floating">{{ 'loginPage.password' | translate }}</ion-label>
+                <ion-input type="password" class="form-control" 
+                    id="password" name="password"
+                    [(ngModel)]="password"
+                    required>
+                </ion-input>
+              </ion-item>
+
+              <br>
+              <ion-button class="my-ion-button-text-initial" color="primary" (click)="loginWithUserAndPassword()" [disabled]="!loginForm.form.valid">{{ 'loginPage.loginbutton' | translate }}</ion-button>
+              <br>
+              <!--
+              <br>
+              <ion-button class="my-ion-button-text-initial" color="primary" (click)="loginWithGoogle()">{{ 'loginPage.loginGoogleButton' | translate }}</ion-button>
+              -->
+          </form>
+          </div>
+
+          <div *ngIf="isLoggedin()">
+              <br>
+              <ion-button class="my-ion-button-text-initial" (click)="logout()">{{ 'loginPage.logoutbutton' | translate }}</ion-button>
+              <br>
+          </div>
+        </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>

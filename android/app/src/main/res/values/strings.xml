@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Desk Reservation</string>
+    <string name="title_activity_main">Desk Reservation</string>
+    <string name="package_name">io.ionic.reservation.firebase.app</string>
+    <string name="custom_url_scheme">io.ionic.reservation.firebase.app</string>
+</resources>

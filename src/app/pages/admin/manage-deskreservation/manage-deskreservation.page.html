@@ -1,0 +1,89 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title color="primary">{{ 'reservationEditorPage.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large" color="primary">{{ 'reservationEditorPage.title' | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div>
+    <ion-card color="light" *ngIf="loadingIndicator">
+      <ion-card-header>
+          <ion-card-title color="primary">{{ 'dataLoadingInProgress' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-spinner name="dots"></ion-spinner>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card color="light" *ngIf="!loadingIndicator && !dataLoaded">
+      <ion-card-header>
+        <ion-card-title color="primary">{{ 'dataLoadingFailed' | translate }}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>&nbsp;</ion-card-content>
+    </ion-card>
+
+    <ion-card color="light" *ngIf="!loadingIndicator && dataLoaded">
+      <ion-card-header>
+          <ion-text>
+            <h3>{{ 'reservationEditorPage.title' | translate }}</h3>
+          </ion-text>
+      </ion-card-header>
+    
+      <ion-card-content>
+            <h2>{{ 'reservationEditorPage.description' | translate }}</h2>
+            <br>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-grid *ngIf="!loadingIndicator && dataLoaded">
+      <ion-row>
+        <ion-col sizeLg="4" sizeMd="6" sizeXs="12" *ngFor="let reservation of reservationList; let i = index">
+          <div>
+            <ion-card color="light">
+              <ion-card-header>
+                  <ion-card-title>
+                    {{ 'reservationPage.desknumber' | translate }}: #{{ reservation.deskNumber }}
+                  </ion-card-title>
+              </ion-card-header>
+            
+              <ion-card-content>
+                  <h2><b>{{reservation.lastname}} {{reservation.firstname}}</b></h2>
+                  <h2>{{reservation.email}}</h2>
+                  <h2>{{reservation.telephone}}</h2>
+                  <br>
+                  <ion-text>
+                    <ion-icon color="danger" name="calendar-number-outline"></ion-icon>
+                    {{ getReservationDate(reservation) | date:'yyyy-MM-dd HH:mm' }} | 
+                    <ion-icon color="danger" name="lock-closed-outline"></ion-icon>
+                    {{reservation.reservationIdentifier}}
+                  </ion-text>
+                  <br><br>
+                  <ion-button class="my-ion-button-text-initial reservationListButton" color="primary" 
+                      [routerLink]="['/deskreservation-editor']" routerLinkActive="active" 
+                      [queryParams]="{ id:reservation.id , desknumber: reservation.deskNumber, editor: true }"
+                      queryParamsHandling="merge">
+                      {{ 'reservationEditorPage.editorButton' | translate }}
+                  </ion-button>
+                      &nbsp;
+                  <ion-button class="my-ion-button-text-initial reservationListButton" color="danger" 
+                    (click)="deleteReservation(reservation)">
+                    {{ 'reservationEditorPage.deleteButton' | translate }}
+                  </ion-button>
+              </ion-card-content>
+            </ion-card>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>
