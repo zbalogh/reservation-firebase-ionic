@@ -6,6 +6,11 @@
 	"dataLoadingInProgress": "Data loading",
 	"dataLoadingFailed": "Data loading failed.",
 
+	"exitAlertDialogHeader": "Exit",
+	"exitAlertDialogMessage": "Are you sure you want to exit?",
+	"exitAlertDialogConfirm": "Yes",
+	"exitAlertDialogCancel": "No",
+
 	"menu": {
 		"deskreservation": "Desk Reservation",
 		"mainpage": "Home",

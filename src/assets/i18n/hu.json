@@ -6,6 +6,11 @@
 	"dataLoadingInProgress": "Adatok betöltése folyamatban",
 	"dataLoadingFailed": "Adatok betöltése sikertelen.",
 
+	"exitAlertDialogHeader": "Bezárás",
+	"exitAlertDialogMessage": "Biztos benne, hogy bezárja az alkalmazást?",
+	"exitAlertDialogConfirm": "Igen",
+	"exitAlertDialogCancel": "Nem",
+
 	"menu": {
 		"deskreservation": "Asztalfoglalás",
 		"mainpage": "Kezdőlap",
