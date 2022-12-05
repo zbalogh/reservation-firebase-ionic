@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { AlertController, NavController, Platform } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthService } from './auth/auth.service';
+import { FcmService } from './services/fcm.service';
 import { TranslateConfigService } from './translate-config.service';
 
 @Component({
@@ -44,11 +45,15 @@ export class AppComponent implements OnInit {
     private platform: Platform,
     private router: Router,
     private navController: NavController,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private fcmService: FcmService
   ) {
       //initialize the translate configuration service
       // this service is a shared singleton service accessible across NgModules
       this.translateConfigService.initLanguage();
+
+      // initialize FCM push notification
+      this.initializePush();
   }
 
   ngOnInit()
@@ -74,6 +79,13 @@ export class AppComponent implements OnInit {
 
     // initialize the back button: allow to exit from this app by pressing back button on the HOME page
     this.initBackButton();
+  }
+
+  initializePush() {
+    this.platform.ready().then(() => {
+      // Trigger the push setup
+      this.fcmService.initPushNotifications();
+    });
   }
 
   isLoggedin(): boolean
