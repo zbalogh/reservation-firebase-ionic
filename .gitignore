@@ -34,3 +34,6 @@ npm-debug.log*
 /tmp
 /out-tsc
 /angular/cache
+
+# firebase config file
+/src/environments/firebase.ts

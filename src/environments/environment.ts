@@ -1,18 +1,13 @@
+import { firebaseConfig } from "./firebase";
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
-  firebaseConfig : {
-    apiKey: "AIzaSyAgBzwaMKv7H9Z_rwH_se5o9CMrqgc2j24",
-    authDomain: "reservation-gui.firebaseapp.com",
-    projectId: "reservation-gui",
-    storageBucket: "reservation-gui.appspot.com",
-    messagingSenderId: "550151776440",
-    appId: "1:550151776440:web:fdcd027525abf9db4eec4d",
-    measurementId: "G-MM9YMY8J01"
-  },
+  // Firebase Configuration
+  ...firebaseConfig,
   NUMBER_OF_ALL_DESKS: 100 
 };
 
